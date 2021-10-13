@@ -5,6 +5,6 @@ import com.afanasyeva656.weather.feature.weather_screen.domain.model.WeatherDoma
 
 class WeatherRepoImpl(private val source: WeatherRemoteSource): WeatherRepo {
     override suspend fun getWeather(): WeatherDomainModel {
-        return source.getWeather("").toDomain()
+        return source.getWeather("Moscow").toDomain()
     }
 }

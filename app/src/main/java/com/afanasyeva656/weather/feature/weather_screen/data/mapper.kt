@@ -5,6 +5,9 @@ import com.afanasyeva656.weather.feature.weather_screen.domain.model.WeatherDoma
 
 fun WeatherModel.toDomain() : WeatherDomainModel {
     return WeatherDomainModel(
-        this.main.temp
+        this.main.temp,
+        this.main.tempMin,
+        this.main.tempMax,
+        this.main.humidity
     )
 }
