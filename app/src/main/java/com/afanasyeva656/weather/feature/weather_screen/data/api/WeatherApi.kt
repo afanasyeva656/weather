@@ -1,7 +1,6 @@
 package com.afanasyeva656.weather.feature.weather_screen.data.api
 
 import com.afanasyeva656.weather.feature.weather_screen.data.api.model.WeatherModel
-import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
 
