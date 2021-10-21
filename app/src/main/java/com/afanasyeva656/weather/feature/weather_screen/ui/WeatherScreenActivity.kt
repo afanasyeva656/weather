@@ -2,6 +2,7 @@ package com.afanasyeva656.weather.feature.weather_screen.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,6 @@ import androidx.lifecycle.Observer
 import com.afanasyeva656.weather.R
 import com.afanasyeva656.weather.feature.weather_screen.domain.model.WeatherDomainModel
 import com.afanasyeva656.weather.feature.wind_screen.ui.WindScreenActivity
-import com.afanasyeva656.weather.feature.wind_screen.ui.WindScreenViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class WeatherScreenActivity: AppCompatActivity() {
@@ -21,7 +21,7 @@ class WeatherScreenActivity: AppCompatActivity() {
         weatherScreenViewModel.liveData.observe(this, Observer(::render))
         weatherScreenViewModel.requestWeather()
 
-        val windButton = findViewById<Button>(R.id.windButton)
+        val windButton = findViewById<Button>(R.id.buttonWind)
         windButton.setOnClickListener {
             Intent(this, WindScreenActivity::class.java).also { startActivity(it) }
         }

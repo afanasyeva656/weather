@@ -4,9 +4,14 @@ import com.afanasyeva656.weather.feature.weather_screen.data.api.WeatherApi
 import com.afanasyeva656.weather.feature.weather_screen.data.api.WeatherRemoteSource
 import com.afanasyeva656.weather.feature.weather_screen.data.api.WeatherRepo
 import com.afanasyeva656.weather.feature.weather_screen.data.api.WeatherRepoImpl
+import com.afanasyeva656.weather.feature.weather_screen.data.storage.CityDataStorage
+import com.afanasyeva656.weather.feature.weather_screen.data.storage.CityDataStorageImpl
+import com.afanasyeva656.weather.feature.weather_screen.data.storage.SettingsRepo
+import com.afanasyeva656.weather.feature.weather_screen.data.storage.SettingsRepoImpl
 import com.afanasyeva656.weather.feature.weather_screen.domain.WeatherInteractor
 import com.afanasyeva656.weather.feature.weather_screen.ui.WeatherScreenViewModel
 import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -48,5 +53,13 @@ val appModule = module {
 
     viewModel {
         WeatherScreenViewModel(get<WeatherInteractor>())
+    }
+
+    single<CityDataStorage> {
+        CityDataStorageImpl(androidContext())
+    }
+
+    single<SettingsRepo> {
+        SettingsRepoImpl(get<CityDataStorage>())
     }
 }

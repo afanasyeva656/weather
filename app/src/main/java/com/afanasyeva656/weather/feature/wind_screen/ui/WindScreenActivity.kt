@@ -6,21 +6,21 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.afanasyeva656.weather.R
-import com.afanasyeva656.weather.feature.weather_screen.domain.model.WindDomainModel
+import com.afanasyeva656.weather.feature.weather_screen.domain.model.WeatherDomainModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class WindScreenActivity: AppCompatActivity() {
-    private val windScreenViewModel by viewModel<WindScreenViewModel>()
+    val windScreenViewModel by viewModel<WindScreenViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        setContentView(R.layout.activity_wind_speed)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_wind)
         windScreenViewModel.liveData.observe(this, Observer(::render))
-        windScreenViewModel.requestWind()
+        windScreenViewModel.getWind()
     }
 
-    private fun render(state: WindDomainModel) {
-        findViewById<TextView>(R.id.tvWindSpeed).text = state.speed.toString()
+    private fun render(state: WeatherDomainModel) {
+        findViewById<TextView>(R.id.tvWindSpeed).let { it.text = state.windDomainModel.speed.toString() }
     }
 }
