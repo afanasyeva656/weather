@@ -13,7 +13,7 @@ class WindScreenViewModel(private val weatherInteractor: WeatherInteractor): Vie
 
     fun getWind() {
         viewModelScope.launch {
-            liveData.postValue(weatherInteractor.getWeather())
+            liveData.postValue(weatherInteractor.getWeather("Moscow"))
         }
     }
 }

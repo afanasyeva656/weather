@@ -10,7 +10,7 @@ import com.afanasyeva656.weather.feature.weather_screen.domain.model.WeatherDoma
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class WindScreenActivity: AppCompatActivity() {
+class WindScreenActivity : AppCompatActivity() {
     val windScreenViewModel by viewModel<WindScreenViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +21,8 @@ class WindScreenActivity: AppCompatActivity() {
     }
 
     private fun render(state: WeatherDomainModel) {
-        findViewById<TextView>(R.id.tvWindSpeed).let { it.text = state.windDomainModel.speed.toString() }
+        findViewById<TextView>(R.id.tvWindSpeed).let {
+            it.text = state.windDomainModel.speed.toString()
+        }
     }
 }

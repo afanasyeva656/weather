@@ -11,5 +11,5 @@ interface WeatherApi {
         @Query("q") cityName: String,
         @Query("appid") appId: String = "db7cb225f53464f43cc2d30475aff794",
         @Query("units") units: String = "metric"
-    ) : WeatherModel
+    ): WeatherModel
 }

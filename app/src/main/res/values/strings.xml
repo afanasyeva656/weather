@@ -2,5 +2,8 @@
     <string name="app_name">weather</string>
     <string name="settings">Settings</string>
     <string name="weather">Weather</string>
-    <string name="wind">Wind</string>
+    <string name="bWind">Wind</string>
+    <string name="etCityNameHint">City</string>
+    <string name="defaultWeatherValue">0.0</string>
+    <string name="defaultCityName">Moscow</string>
 </resources>

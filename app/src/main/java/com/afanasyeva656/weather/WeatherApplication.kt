@@ -1,6 +1,7 @@
 package com.afanasyeva656.weather
 
 import android.app.Application
+import com.afanasyeva656.weather.feature.settings_screen.di.settingsModule
 import com.afanasyeva656.weather.feature.weather_screen.di.appModule
 import com.afanasyeva656.weather.feature.wind_screen.di.windModule
 import org.koin.android.ext.koin.androidContext
@@ -15,7 +16,7 @@ class WeatherApplication : Application() {
         startKoin{
             androidLogger()
             androidContext(this@WeatherApplication)
-            modules(listOf<Module>(appModule, windModule))
+            modules(listOf<Module>(appModule, windModule, settingsModule))
         }
     }
 }

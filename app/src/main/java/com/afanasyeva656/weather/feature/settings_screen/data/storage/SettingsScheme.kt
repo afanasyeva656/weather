@@ -1,7 +1,7 @@
-package com.afanasyeva656.weather.feature.weather_screen.data.storage
+package com.afanasyeva656.weather.feature.settings_screen.data.storage
 
 import androidx.datastore.preferences.core.stringPreferencesKey
 
-object CityScheme {
+object SettingsScheme {
     val cityName = stringPreferencesKey("cityName")
 }

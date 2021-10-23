@@ -4,5 +4,5 @@ import com.afanasyeva656.weather.feature.weather_screen.domain.model.WeatherDoma
 import com.afanasyeva656.weather.feature.weather_screen.domain.model.WindDomainModel
 
 interface WeatherRepo {
-    suspend fun getWeather(): WeatherDomainModel
+    suspend fun getWeather(cityName: String): WeatherDomainModel
 }
