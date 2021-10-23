@@ -8,7 +8,7 @@ class SettingsInteractor(private val repository: SettingsRepo) {
         repository.saveCity(city)
     }
 
-    suspend fun getCity(): SettingsModel {
-        return repository.getCity()
+    suspend fun getSettings(): SettingsModel {
+        return repository.getSettings()
     }
 }

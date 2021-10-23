@@ -7,7 +7,7 @@ class SettingsRepoImpl(private val dataStorage: SettingsStorage): SettingsRepo {
         dataStorage.saveCity(city)
     }
 
-    override suspend fun getCity(): SettingsModel {
-        return dataStorage.getCity()
+    override suspend fun getSettings(): SettingsModel {
+        return dataStorage.getSettings()
     }
 }

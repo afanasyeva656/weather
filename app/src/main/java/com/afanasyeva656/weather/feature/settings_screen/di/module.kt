@@ -5,7 +5,9 @@ import com.afanasyeva656.weather.feature.settings_screen.data.storage.SettingsRe
 import com.afanasyeva656.weather.feature.settings_screen.data.storage.SettingsRepoImpl
 import com.afanasyeva656.weather.feature.settings_screen.data.storage.SettingsStorage
 import com.afanasyeva656.weather.feature.settings_screen.data.storage.SettingsStorageImpl
+import com.afanasyeva656.weather.feature.settings_screen.ui.SettingsScreenViewModel
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val settingsModule = module {
@@ -19,5 +21,9 @@ val settingsModule = module {
 
     single<SettingsInteractor> {
         SettingsInteractor(get<SettingsRepo>())
+    }
+
+    viewModel{
+        SettingsScreenViewModel(get<SettingsInteractor>())
     }
 }

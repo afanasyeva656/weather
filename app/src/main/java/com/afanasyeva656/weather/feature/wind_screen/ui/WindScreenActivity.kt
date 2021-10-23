@@ -21,8 +21,12 @@ class WindScreenActivity : AppCompatActivity() {
     }
 
     private fun render(state: WeatherDomainModel) {
-        findViewById<TextView>(R.id.tvWindSpeed).let {
-            it.text = state.windDomainModel.speed.toString()
-        }
+        val speed = state.windDomainModel.speed.toString()
+        val degree = state.windDomainModel.degree.toString()
+
+        findViewById<TextView>(R.id.tvWindSpeed).text =
+            getString(R.string.wind_speed, speed)
+        findViewById<TextView>(R.id.tvWindDegree).text =
+            getString(R.string.wind_degree, degree)
     }
 }

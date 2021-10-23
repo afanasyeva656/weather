@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface SettingsStorage {
     val settingsPreferences: Flow<SettingsModel>
     suspend fun saveCity(city: String)
-    suspend fun getCity(): SettingsModel
+    suspend fun getSettings(): SettingsModel
 }
