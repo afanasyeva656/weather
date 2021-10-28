@@ -1,10 +1,10 @@
 package com.afanasyeva656.weather.feature.weather_screen.di
 
+import com.afanasyeva656.weather.feature.settings_screen.domain.SettingsInteractor
 import com.afanasyeva656.weather.feature.weather_screen.data.api.WeatherApi
 import com.afanasyeva656.weather.feature.weather_screen.data.api.WeatherRemoteSource
 import com.afanasyeva656.weather.feature.weather_screen.data.api.WeatherRepo
 import com.afanasyeva656.weather.feature.weather_screen.data.api.WeatherRepoImpl
-import com.afanasyeva656.weather.feature.settings_screen.domain.SettingsInteractor
 import com.afanasyeva656.weather.feature.weather_screen.domain.WeatherInteractor
 import com.afanasyeva656.weather.feature.weather_screen.ui.WeatherScreenViewModel
 import okhttp3.OkHttpClient

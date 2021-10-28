@@ -7,23 +7,17 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.afanasyeva656.weather.R
-import com.afanasyeva656.weather.feature.settings_screen.data.storage.model.SettingsModel
-import com.afanasyeva656.weather.feature.weather_screen.domain.model.WeatherDomainModel
 import com.afanasyeva656.weather.feature.wind_screen.ui.WindScreenActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class WeatherScreenActivity : AppCompatActivity() {
-    private val weatherScreenViewModel by viewModel<WeatherScreenViewModel>()
+    private val viewModel by viewModel<WeatherScreenViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
 
-        weatherScreenViewModel.liveData.observe(this, Observer(::render))
-        weatherScreenViewModel.settingsLiveData.observe(this, Observer(::showCityName))
-
-        weatherScreenViewModel.requestWeather()
-        weatherScreenViewModel.getSettings()
+        viewModel.viewState.observe(this, Observer(::render))
 
         val windButton = findViewById<Button>(R.id.buttonWind)
         windButton.setOnClickListener {
@@ -31,18 +25,15 @@ class WeatherScreenActivity : AppCompatActivity() {
         }
     }
 
-    private fun showCityName(settingsModel: SettingsModel) {
-        findViewById<TextView>(R.id.tvCityName).text = settingsModel.city
-    }
-
-    private fun render(state: WeatherDomainModel) {
+    private fun render(state: ViewState) {
+        findViewById<TextView>(R.id.tvCityName).text = state.cityName
         findViewById<TextView>(R.id.tvTemperature).text =
-            getString(R.string.temperature, state.temperature)
+            getString(R.string.temperature, state.weatherModel.temperature)
         findViewById<TextView>(R.id.tvTemperatureMin).text =
-            getString(R.string.temperature_min, state.temperatureMin)
+            getString(R.string.temperature_min, state.weatherModel.temperatureMin)
         findViewById<TextView>(R.id.tvTemperatureMax).text =
-            getString(R.string.temperature_max, state.temperatureMax)
+            getString(R.string.temperature_max, state.weatherModel.temperatureMax)
         findViewById<TextView>(R.id.tvHumidity).text =
-            getString(R.string.humidity, state.humidity)
+            getString(R.string.humidity, state.weatherModel.humidity)
     }
 }

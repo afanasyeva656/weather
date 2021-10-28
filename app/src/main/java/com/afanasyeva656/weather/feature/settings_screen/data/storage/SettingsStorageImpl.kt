@@ -18,8 +18,6 @@ class SettingsStorageImpl(
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = CITY_PREFERENCES)
     }
 
-//    private inline val Preferences.cityName
-//        get() = this[SettingsScheme.cityName] ?: "Moscow"
 
     override val settingsPreferences: Flow<SettingsModel> = context.dataStore.data
         .catch {
