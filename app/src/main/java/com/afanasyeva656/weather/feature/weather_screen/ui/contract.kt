@@ -7,7 +7,7 @@ data class ViewState(
     val weatherModel: WeatherDomainModel,
     val cityName: String,
     val isLoading: Boolean,
-    val error: String
+    val error: String?
 )
 
 sealed class UIEvent() : Event {

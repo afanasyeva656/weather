@@ -23,7 +23,7 @@ class WeatherScreenViewModel(
                 temperatureMin = "0.0",
                 humidity = "0.0",
                 windDomainModel = WindDomainModel(0.0, 0)
-            ), "City", true, ""
+            ), "City", true, null
         )
     }
 
@@ -46,7 +46,8 @@ class WeatherScreenViewModel(
                 return previousState.copy(
                     weatherModel = event.weatherModel,
                     cityName = event.cityName,
-                    isLoading = false
+                    isLoading = false,
+                    error = null
                 )
             }
             is DataEvent.ErrorWeatherRequest -> {

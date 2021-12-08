@@ -15,4 +15,6 @@
 
     <string name="wind_speed">Wind speed: %1$s</string>
     <string name="wind_degree">Wind degree: %1$s</string>
+
+    <string name="snackbar_error"></string>
 </resources>

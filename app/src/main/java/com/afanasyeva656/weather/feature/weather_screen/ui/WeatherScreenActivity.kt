@@ -2,12 +2,16 @@ package com.afanasyeva656.weather.feature.weather_screen.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.afanasyeva656.weather.R
 import com.afanasyeva656.weather.feature.wind_screen.ui.WindScreenActivity
+import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class WeatherScreenActivity : AppCompatActivity() {
@@ -35,5 +39,19 @@ class WeatherScreenActivity : AppCompatActivity() {
             getString(R.string.temperature_max, state.weatherModel.temperatureMax)
         findViewById<TextView>(R.id.tvHumidity).text =
             getString(R.string.humidity, state.weatherModel.humidity)
+
+        updateProgressBar(state.isLoading)
+        renderError(state.error)
+    }
+
+    private fun updateProgressBar(isLoading: Boolean) {
+        findViewById<ProgressBar>(R.id.progressBar).visibility =
+            if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun renderError(error: String?) {
+        error?.let {
+            Snackbar.make(findViewById(android.R.id.content), it, Snackbar.LENGTH_LONG).show()
+        }
     }
 }
